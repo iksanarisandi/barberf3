@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fa3 Barbershop - Cukur Panggilan Profesional</title>
+    <title>Fa3 Barbershop - Cukur Panggilan Profesional Jakarta</title>
+    <meta name="description" content="Fa3 Barbershop menyediakan layanan cukur rambut panggilan profesional di Jakarta Utara, Barat, Pusat, dan Timur. Cukur rambut, cukur kumis, dan styling rambut modern langsung ke rumah Anda.">
+    <meta name="keywords" content="cukur panggilan jakarta, barbershop jakarta, cukur rambut jakarta, potong rambut panggilan, barber keliling jakarta, cukur kumis jakarta">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Fa3 Barbershop - Cukur Panggilan Profesional Jakarta">
+    <meta property="og:description" content="Layanan cukur rambut panggilan profesional di Jakarta. Cukur rambut, cukur kumis, dan styling langsung ke rumah Anda.">
+    <meta property="og:image" content="logo.svg">
+    <meta property="og:type" content="website">
 </head>
 <body>
     <!-- Header -->
@@ -74,17 +83,17 @@
                     </div>
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-shave"></i>
+                            <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3>Cukur Jenggot</h3>
-                        <p>Cukur jenggot dan kumis rapi dengan teknik profesional</p>
+                        <h3>Cukur Kumis</h3>
+                        <p>Cukur kumis rapi dengan teknik profesional dan hasil memuaskan</p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-spa"></i>
                         </div>
                         <h3>Paket Lengkap</h3>
-                        <p>Potong rambut + cukur jenggot + treatment rambut</p>
+                        <p>Potong rambut + cukur kumis + styling rambut</p>
                     </div>
                 </div>
             </div>
@@ -143,27 +152,6 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section class="gallery">
-            <div class="container">
-                <h2 class="section-title">Portofolio</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1585747820525-1b7752a5b5db?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1562322145-3f4db0a672f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1585747820525-1b7752a5b5db?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 3">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1562322145-3f4db0a672f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 4">
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Booking Section -->
         <section id="booking" class="booking">
             <div class="container">
@@ -179,15 +167,24 @@
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="district">Kecamatan</label>
-                            <select id="district" name="district" required>
-                                <option value="">Pilih Kecamatan</option>
-                                <option value="A">Kecamatan A</option>
-                                <option value="B">Kecamatan B</option>
-                                <option value="C">Kecamatan C</option>
-                                <option value="D">Kecamatan D</option>
-                                <option value="E">Kecamatan E</option>
+                            <label for="city">Kota</label>
+                            <select id="city" name="city" required>
+                                <option value="">Pilih Kota</option>
+                                <option value="Jakarta Utara">Jakarta Utara</option>
+                                <option value="Jakarta Barat">Jakarta Barat</option>
+                                <option value="Jakarta Pusat">Jakarta Pusat</option>
+                                <option value="Jakarta Timur">Jakarta Timur</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">Kecamatan</label>
+                            <select id="district" name="district" required disabled>
+                                <option value="">Pilih Kota Terlebih Dahulu</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Alamat Lengkap</label>
+                            <input type="text" id="address" name="address" placeholder="Masukkan alamat lengkap Anda" required>
                         </div>
                         <div class="form-group">
                             <label for="date">Tanggal</label>
@@ -209,6 +206,15 @@
                                 <option value="18:00">18:00</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="payment">Metode Pembayaran</label>
+                            <select id="payment" name="payment" required>
+                                <option value="">Pilih Metode Pembayaran</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Transfer Bank">Transfer Bank</option>
+                                <option value="QRIS">QRIS</option>
+                            </select>
+                        </div>
                         <button type="submit" class="submit-btn">Kirim Booking</button>
                     </form>
                     
@@ -216,10 +222,25 @@
                         <h3>Informasi Pembayaran</h3>
                         <div class="payment-details">
                             <p><strong>Total Harga:</strong> Rp40.000</p>
-                            <p><strong>Transfer ke:</strong></p>
-                            <div class="bank-info">
-                                <p>BCA 1234567890</p>
-                                <p>a.n. Faizal Barber</p>
+                            <p class="payment-note">Pilih metode pembayaran: Cash (dibayar setelah selesai), Transfer Bank, atau QRIS</p>
+                            <div class="payment-methods">
+                                <div class="bank-info">
+                                    <p><strong>Transfer Bank BRI:</strong></p>
+                                    <div class="rekening-container">
+                                        <p>No. Rek: <strong id="rekeningNumber">003-201-041859504</strong></p>
+                                        <button type="button" class="copy-btn" onclick="copyRekening(event)" title="Copy Nomor Rekening">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    <p>a.n. <strong>Sururudin</strong></p>
+                                </div>
+                                <div class="qris-info">
+                                    <p><strong>QRIS:</strong></p>
+                                    <a href="qris.jpg" download="QRIS-Fa3-Barbershop.jpg" title="Klik untuk download QRIS">
+                                        <img src="qris.jpg" alt="QRIS Fa3 Barbershop" class="qris-image">
+                                    </a>
+                                    <p class="qris-note">Klik gambar untuk download QRIS</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,7 +252,7 @@
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content footer-content-three">
                 <div class="footer-section">
                     <h3>Fa3 Barbershop</h3>
                     <p>Layanan cukur panggilan profesional langsung ke lokasi Anda</p>
@@ -240,7 +261,14 @@
                     <h4>Kontak</h4>
                     <div class="contact-info">
                         <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/6283812748477" target="_blank">+62 838-1274-8477</a></p>
-                        <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/fa3barbershop" target="_blank">@fa3barbershop</a></p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Alamat & Lokasi</h4>
+                    <div class="location-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Rawabebek Gang 28<br>Kelurahan Penjaringan<br>Kecamatan Penjaringan<br>Jakarta Utara</p>
+                        <p style="margin-top: 0.5rem;"><em>(Patokan: Depan Bimbel Abi dan Umi)</em></p>
+                        <p style="margin-top: 1rem;"><a href="https://maps.app.goo.gl/62VkJhzXAcyVhRwq7" target="_blank" rel="noopener" class="map-link"><i class="fas fa-map"></i> Buka di Google Maps</a></p>
                     </div>
                 </div>
             </div>

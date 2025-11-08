@@ -368,34 +368,6 @@ section {
     color: #4CAF50;
 }
 
-/* Gallery Section */
-.gallery {
-    background: var(--secondary-color);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
 /* Booking Section */
 .booking-form-container {
     display: grid;
@@ -475,11 +447,107 @@ section {
     color: var(--text-light);
 }
 
+.payment-methods {
+    display: grid;
+    gap: 1.5rem;
+}
+
 .bank-info {
     background: var(--primary-color);
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
+}
+
+.rekening-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0;
+}
+
+.copy-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.copy-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn i {
+    font-size: 0.85rem;
+}
+
+.qris-info {
+    background: var(--primary-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.qris-info a {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.qris-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.qris-info a:hover .qris-image {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+.qris-info a:active .qris-image {
+    transform: scale(0.98);
+}
+
+.payment-note {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.qris-note {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* Footer */
@@ -496,6 +564,10 @@ section {
     margin-bottom: 2rem;
 }
 
+.footer-content-three {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .footer-section h3,
 .footer-section h4 {
     margin-bottom: 1rem;
@@ -507,19 +579,37 @@ section {
     line-height: 1.6;
 }
 
-.contact-info a {
+.contact-info a,
+.location-info a {
     color: var(--text-light);
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.contact-info a:hover {
+.contact-info a:hover,
+.location-info a:hover {
     color: var(--accent-color);
 }
 
-.contact-info i {
+.contact-info i,
+.location-info i {
     margin-right: 0.5rem;
     color: var(--accent-color);
+}
+
+.map-link {
+    display: inline-block;
+    background: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.map-link:hover {
+    background: var(--accent-color);
+    color: var(--primary-color) !important;
+    border-color: var(--accent-color);
 }
 
 .footer-bottom {
@@ -593,7 +683,8 @@ section {
         gap: 2rem;
     }
 
-    .footer-content {
+    .footer-content,
+    .footer-content-three {
         grid-template-columns: 1fr;
         text-align: center;
     }
@@ -606,6 +697,20 @@ section {
     .features-grid,
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+
+    .rekening-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .qris-image {
+        max-width: 250px;
     }
 }
 

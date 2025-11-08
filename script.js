@@ -43,6 +43,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Copy Rekening Number Function
+function copyRekening(event) {
+    const rekeningNumber = document.getElementById('rekeningNumber').textContent;
+    // Remove hyphens/dashes from the number
+    const cleanNumber = rekeningNumber.replace(/-/g, '');
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(cleanNumber).then(() => {
+        // Show success notification
+        showNotification('✓ Nomor rekening berhasil dicopy!');
+        
+        // Change button text temporarily
+        const copyBtn = event.target.closest('.copy-btn');
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        copyBtn.style.background = '#4CAF50';
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalHTML;
+            copyBtn.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Copy failed:', err);
+        showNotification('Gagal copy nomor rekening');
+    });
+}
+
 // Scroll to booking function
 function scrollToBooking() {
     const bookingSection = document.getElementById('booking');
@@ -52,6 +79,73 @@ function scrollToBooking() {
             block: 'start'
         });
     }
+}
+
+// City and District Cascade Data
+const cityDistrictData = {
+    'Jakarta Utara': [
+        'Kec. Penjaringan',
+        'Kec. Pademangan',
+        'Kec. Tanjung Priok',
+        'Kec. Koja',
+        'Kec. Cilincing',
+        'Kec. Kelapa Gading'
+    ],
+    'Jakarta Barat': [
+        'Kec. Cengkareng',
+        'Kec. Grogol Petamburan',
+        'Kec. Taman Sari',
+        'Kec. Tambora',
+        'Kec. Kebon Jeruk',
+        'Kec. Kembangan',
+        'Kec. Kalideres',
+        'Kec. Palmerah'
+    ],
+    'Jakarta Pusat': [
+        'Kec. Gambir',
+        'Kec. Tanah Abang',
+        'Kec. Sawah Besar',
+        'Kec. Kemayoran',
+        'Kec. Senen',
+        'Kec. Cempaka Putih',
+        'Kec. Menteng',
+        'Kec. Johar Baru'
+    ],
+    'Jakarta Timur': [
+        'Kec. Matraman',
+        'Kec. Jatinegara',
+        'Kec. Pasar Rebo',
+        'Kec. Kramat Jati',
+        'Kec. Pulo Gadung',
+        'Kec. Cakung',
+        'Kec. Ciracas',
+        'Kec. Cipayung',
+        'Kec. Makasar',
+        'Kec. Duren Sawit'
+    ]
+};
+
+const citySelect = document.getElementById('city');
+const districtSelect = document.getElementById('district');
+
+if (citySelect && districtSelect) {
+    citySelect.addEventListener('change', function() {
+        const selectedCity = this.value;
+        districtSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+        
+        if (selectedCity && cityDistrictData[selectedCity]) {
+            districtSelect.disabled = false;
+            cityDistrictData[selectedCity].forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        } else {
+            districtSelect.disabled = true;
+            districtSelect.innerHTML = '<option value="">Pilih Kota Terlebih Dahulu</option>';
+        }
+    });
 }
 
 // Set minimum date for booking (today)
@@ -72,9 +166,12 @@ if (bookingForm) {
         const formData = new FormData(this);
         const name = formData.get('name');
         const phone = formData.get('phone');
+        const city = formData.get('city');
         const district = formData.get('district');
+        const address = formData.get('address');
         const date = formData.get('date');
         const time = formData.get('time');
+        const payment = formData.get('payment');
         
         // Format date for better readability
         const formattedDate = new Date(date).toLocaleDateString('id-ID', {
@@ -84,14 +181,27 @@ if (bookingForm) {
             day: 'numeric'
         });
         
-        // Create WhatsApp message
+        // Create WhatsApp message with payment method info
+        let paymentInfo = '';
+        if (payment === 'Transfer Bank') {
+            paymentInfo = `%0A%0A💳 *Info Transfer Bank:*%0ANo. Rek: 003-201-041859504%0Aa.n. Sururudin`;
+        } else if (payment === 'QRIS') {
+            paymentInfo = `%0A%0A📱 *Info QRIS:*%0ASilakan scan QRIS yang tersedia untuk pembayaran`;
+        } else if (payment === 'Cash') {
+            paymentInfo = `%0A%0A💵 *Pembayaran Cash:*%0ADibayar setelah layanan selesai`;
+        }
+        
         const message = `*Booking Baru - Fa3 Barbershop*%0A%0A` +
             `👤 *Nama:* ${name}%0A` +
             `📱 *Nomor HP:* ${phone}%0A` +
+            `📍 *Kota:* ${city}%0A` +
             `📍 *Kecamatan:* ${district}%0A` +
+            `🏠 *Alamat:* ${address}%0A` +
             `📅 *Tanggal:* ${formattedDate}%0A` +
-            `⏰ *Jam:* ${time}%0A%0A` +
-            `💰 *Total Harga:* Rp40.000%0A%0A` +
+            `⏰ *Jam:* ${time}%0A` +
+            `💳 *Metode Pembayaran:* ${payment}` +
+            paymentInfo +
+            `%0A%0A💰 *Total Harga:* Rp40.000%0A%0A` +
             `Mohon konfirmasi ketersediaan jadwal. Terima kasih!`;
         
         // Open WhatsApp with pre-filled message
@@ -197,52 +307,16 @@ document.querySelectorAll('.service-card, .feature-item').forEach(card => {
     });
 });
 
-// Gallery lightbox effect (optional enhancement)
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', function() {
-        // Create lightbox
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            cursor: pointer;
-        `;
-        
-        const lightboxImg = document.createElement('img');
-        lightboxImg.src = this.src;
-        lightboxImg.style.cssText = `
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        `;
-        
-        lightbox.appendChild(lightboxImg);
-        document.body.appendChild(lightbox);
-        
-        // Close lightbox on click
-        lightbox.addEventListener('click', () => {
-            document.body.removeChild(lightbox);
-        });
-    });
-});
-
 // Form validation
 function validateForm() {
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const city = document.getElementById('city').value;
     const district = document.getElementById('district').value;
+    const address = document.getElementById('address').value.trim();
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
+    const payment = document.getElementById('payment').value;
     
     // Basic validation
     if (name.length < 3) {
@@ -257,8 +331,18 @@ function validateForm() {
         return false;
     }
     
+    if (!city) {
+        showNotification('Pilih kota terlebih dahulu');
+        return false;
+    }
+    
     if (!district) {
         showNotification('Pilih kecamatan terlebih dahulu');
+        return false;
+    }
+    
+    if (address.length < 10) {
+        showNotification('Alamat minimal 10 karakter');
         return false;
     }
     
@@ -269,6 +353,11 @@ function validateForm() {
     
     if (!time) {
         showNotification('Pilih jam terlebih dahulu');
+        return false;
+    }
+    
+    if (!payment) {
+        showNotification('Pilih metode pembayaran terlebih dahulu');
         return false;
     }
     
