@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fa3 Barbershop - Cukur Panggilan Profesional</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Fa3 Barbershop</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Beranda</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                    <li><a href="#services" class="nav-link">Layanan</a></li>
+                    <li><a href="#booking" class="nav-link">Booking</a></li>
+                    <li><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Cukur Panggilan ke Rumah, Cepat & Profesional</h1>
+                    <p class="hero-subtitle">Fa3 Barbershop hadir langsung ke lokasi Anda dengan layanan cukur berkualitas tanpa perlu antri</p>
+                    <button class="cta-button" onclick="scrollToBooking()">Booking Sekarang</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Barber Professional">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">Tentang Fa3 Barbershop</h2>
+                    <div class="about-text">
+                        <p>Fa3 Barbershop dikelola oleh Faizal, seorang ahli cukur berpengalaman dengan lebih dari 5 tahun melayani berbagai gaya rambut pria modern. Dengan peralatan lengkap dan steril, kami siap memberikan layanan terbaik langsung di tempat Anda.</p>
+                        <p class="highlight">"Fa3 Barbershop hadir langsung ke lokasi Anda, tanpa antre, hasil rapi dan bergaya."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Layanan Kami</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Potong Rambut</h3>
+                        <p>Potong rambut modern dengan berbagai gaya sesuai keinginan Anda</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shave"></i>
+                        </div>
+                        <h3>Cukur Jenggot</h3>
+                        <p>Cukur jenggot dan kumis rapi dengan teknik profesional</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Paket Lengkap</h3>
+                        <p>Potong rambut + cukur jenggot + treatment rambut</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Keunggulan Layanan Keliling</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-home"></i>
+                        <h3>Datang ke Rumah</h3>
+                        <p>Layanan panggilan langsung ke lokasi Anda</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Fleksibel Waktu</h3>
+                        <p>Pilih waktu yang sesuai dengan jadwal Anda</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Peralatan Steril</h3>
+                        <p>Kebersihan dan keselamatan menjadi prioritas</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-star"></i>
+                        <h3>Hasil Profesional</h3>
+                        <p>Dikerjakan oleh barber berpengalaman</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="container">
+                <h2 class="section-title">Harga & Paket</h2>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Layanan Panggilan</h3>
+                        <div class="price">
+                            <span class="currency">Rp</span>
+                            <span class="amount">40.000</span>
+                        </div>
+                    </div>
+                    <div class="pricing-details">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Potong Rambut Rp30.000</li>
+                            <li><i class="fas fa-check"></i> Biaya Panggilan Rp10.000</li>
+                            <li><i class="fas fa-check"></i> Peralatan Lengkap</li>
+                            <li><i class="fas fa-check"></i> Layanan di Lokasi Anda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Portofolio</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1585747820525-1b7752a5b5db?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562322145-3f4db0a672f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1585747820525-1b7752a5b5db?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562322145-3f4db0a672f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Haircut Style 4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking">
+            <div class="container">
+                <h2 class="section-title">Form Booking</h2>
+                <div class="booking-form-container">
+                    <form id="bookingForm" class="booking-form">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor HP</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">Kecamatan</label>
+                            <select id="district" name="district" required>
+                                <option value="">Pilih Kecamatan</option>
+                                <option value="A">Kecamatan A</option>
+                                <option value="B">Kecamatan B</option>
+                                <option value="C">Kecamatan C</option>
+                                <option value="D">Kecamatan D</option>
+                                <option value="E">Kecamatan E</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Tanggal</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Jam</label>
+                            <select id="time" name="time" required>
+                                <option value="">Pilih Jam</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Kirim Booking</button>
+                    </form>
+                    
+                    <div class="payment-info">
+                        <h3>Informasi Pembayaran</h3>
+                        <div class="payment-details">
+                            <p><strong>Total Harga:</strong> Rp40.000</p>
+                            <p><strong>Transfer ke:</strong></p>
+                            <div class="bank-info">
+                                <p>BCA 1234567890</p>
+                                <p>a.n. Faizal Barber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fa3 Barbershop</h3>
+                    <p>Layanan cukur panggilan profesional langsung ke lokasi Anda</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <div class="contact-info">
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/6283812748477" target="_blank">+62 838-1274-8477</a></p>
+                        <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/fa3barbershop" target="_blank">@fa3barbershop</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fa3 Barbershop – All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
